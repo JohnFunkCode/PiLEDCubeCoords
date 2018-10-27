@@ -37,6 +37,7 @@ def initialize_gpio():
     GPIO.setup(21, GPIO.OUT)
 
 def set(x,y,z):
+    print(pins[x][y][z])
     GPIO.output(pins[x][y][z][0],True)
     GPIO.output(pins[x][y][z][1],True)
 
