@@ -8,6 +8,13 @@ pins=[[[[40,7],[40,11],[40,35],[40,37]],[[40,12],[40,13],[40,31],[40,33]],[[40,1
       [[[36,7],[36,11],[36,35],[36,37]],[[36,12],[36,13],[36,31],[36,33]],[[36,15],[36,16],[36,23],[36,29]],[[36,18],[36,19],[36,21],[36,22]]],
       [[[32,7],[32,11],[32,35],[32,37]],[[32,12],[32,13],[32,31],[32,33]],[[32,15],[32,16],[32,23],[32,29]],[[32,18],[32,19],[32,21],[32,22]]]]
 
+#GPIO Pins that control a layer
+LAYERS = [40,38,36,32]
+
+#GPIO Pins that control the LEDS on a layer
+GRID = [7,11,35,37,12,13,31,33,15,16,23,29,18,19,21,22]
+
+
 def initialize_gpio():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
@@ -36,6 +43,14 @@ def initialize_gpio():
     GPIO.setup(22, GPIO.OUT)
     GPIO.setup(21, GPIO.OUT)
 
+def reset_grid():
+    for led in GRID:
+        GPIO.output(led,False)
+
+def reset_layers():
+    for layer in LAYERS:
+        GPIO.reset(layer,False)
+
 def set(x,y,z):
     print(pins[x][y][z])
     GPIO.output(pins[x][y][z][0],True)
@@ -48,5 +63,7 @@ def re_set(x,y,z):
 
 if __name__ == '__main__':
     initialize_gpio()
+    reset_grid()
+    reset_layers()
     set(0,0,0)
 
