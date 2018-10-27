@@ -57,8 +57,8 @@ def set(x,y,z):
     GPIO.output(pins[x][y][z][1],True)
 
 def reset(x,y,z):
-    GPIO(pins[x][y][z][0],False)
-    GPIO(pins[x][y][z][1],False)
+    GPIO.output(pins[x][y][z][0],False)
+    GPIO.output(pins[x][y][z][1],False)
 
 
 if __name__ == '__main__':
