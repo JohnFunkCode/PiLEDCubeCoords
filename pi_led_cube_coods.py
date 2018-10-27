@@ -56,7 +56,7 @@ def set(x,y,z):
     GPIO.output(pins[x][y][z][0],True)
     GPIO.output(pins[x][y][z][1],True)
 
-def re_set(x,y,z):
+def reset(x,y,z):
     GPIO(pins[x][y][z][0],False)
     GPIO(pins[x][y][z][1],False)
 
@@ -65,5 +65,19 @@ if __name__ == '__main__':
     initialize_gpio()
     reset_grid()
     reset_layers()
-    set(0,0,0)
 
+    set(0,0,0)
+    time.sleep(1)
+    reset(0,0,0)
+
+    set(1,1,1)
+    time.sleep(1)
+    reset(1,1,1)
+
+    set(2,2,2)
+    time.sleep(1)
+    reset(2,2,2)
+
+    set(3,3,3)
+    time.sleep(1)
+    reset(3,3,3)
