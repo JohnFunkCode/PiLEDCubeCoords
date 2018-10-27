@@ -49,7 +49,7 @@ def reset_grid():
 
 def reset_layers():
     for layer in LAYERS:
-        GPIO.reset(layer,False)
+        GPIO.output(layer,False)
 
 def set(x,y,z):
     print(pins[x][y][z])
